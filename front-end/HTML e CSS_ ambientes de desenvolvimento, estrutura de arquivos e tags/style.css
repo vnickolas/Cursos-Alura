@@ -21,6 +21,24 @@ body {
     justify-content: space-evenly;
 }
 
+/* AJUSTANDO O TAMANHO LIMITE DO CONTAINER TEXTUAL */
+
+.apresentacao__conteudo { 
+    width: 615px;
+}
+
+/* AJUSTANDO O TITULO DO CONTAINER TEXTUAL */
+
+.apresentacao__conteudo__titulo {
+    font-size: 36px;
+}
+
 .titulo-destaque {
     color: #22D4FD;
+}
+
+/* AJUSTANDO O TEXT DO CONTAINER TEXTUAL */
+
+.apresentacao__conteudo__text {
+    font-size: 24px;
 }
