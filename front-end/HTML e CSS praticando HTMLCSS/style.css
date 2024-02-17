@@ -1,0 +1,261 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+:root {
+    /* border: 1px solid white; */
+    --branco-principal: #FFFFFF;
+    --cinza-secundario: #C0C0C0;
+    --azul-botao: #167BF7;
+    --cor-de-fundo: #00030C;
+    --font-principal: 'Inter'
+}
+
+body {
+    background-color: var(--cor-de-fundo);
+    color: var(--branco-principal);
+    font-family: var(--font-principal);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* CONTAINER PRIMARIO */
+
+.primario {
+    height: 100vh;
+    background-image: url(img/Background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    align-items: center;
+    text-align: center;
+
+    padding: 2em;
+}
+
+.container{    
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+/* AJUSTANDO OS ÍCONES DO CONT. PRIMARIO */
+
+.container-caixa-primaria{
+    margin: 0 6em;
+}
+
+.container-img-primaria {
+    margin: 1em 0 2em 0;
+}
+
+/* CONFIGURANDO O H1 DO CONT. PRIMARIO */
+
+.container-titulo-primario {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+
+/* BOTOES DO CONT. PRIMARIO */
+
+.container-botao1-primario {
+    background-color: var(--azul-botao);
+    color: var(--branco-principal);
+
+    display: block;
+
+    padding: 1em;
+    margin-bottom: 1.2em;
+
+    border-radius: 10px;
+    box-shadow: 1px 1px 15px var(--branco-principal);
+}
+.container-botao1-primario:hover {
+    background-color: #2b85f3;
+    box-shadow: inset 1px 1px 10px rgb(0, 0, 0);
+    transition: 0.5s;
+}
+
+.container-botao2-primario {
+    background-color: transparent;
+    color: var(--branco-principal);
+
+    display: block;
+
+    padding: 1em;
+    margin-bottom: 1em;
+
+    border-radius: 10px;
+    box-shadow: 1px 1px 15px var(--branco-principal)
+}
+.container-botao2-primario:hover {
+    background-color: var(--branco-principal);
+    color: var(--cor-de-fundo);
+    box-shadow: inset 1px 1px 10px rgb(0, 0, 0);
+    transition: 0.5s;
+}
+
+/* AVISO DO RODAPE ABAIXO DO 2º BOTAO */
+
+.aviso {
+    color: var(--cinza-secundario);
+    font-size: 12px;
+}
+
+/* CONTAINER SECUNDARIO */
+
+.secundario {    
+    align-items: center;
+    margin: 10em 6em;  
+    padding: 2.8em;
+}
+
+/* AJUSTANDO OS ÍCONES DO CONT. SECUNDARIO */
+
+.container-img-secundario {
+    width: 80%;
+}
+.container-caixa-secundario {
+    padding: 2em;
+}
+
+/* CONFIGURANDO O H2 E P DO CONT. SECUNDARIO */
+
+.container-titulo-secundario {
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--branco-principal);
+    margin-bottom: 0.2em;
+}
+.container-text1-secundario {
+    color: var(--cinza-secundario);
+}
+
+
+/* CONTAINER TERCIARIO */
+
+.terciario {
+    margin: 10em 6em;    
+    padding: 2.8em;
+}
+
+/* AJUSTANDO OS ÍCONES DO CONT. TERCIARIO */
+
+.container-caixa-terciario {
+    padding: 2em;
+}
+.container-img-terciario {    
+    padding: 2.2em;
+}
+
+.container-text1-terciario {
+    color: var(--cinza-secundario);
+}
+
+/* CONFIGURANDO O  DO CONT. TERCIARIO */
+
+.container-botao1-terciario {
+    background-color: var(--azul-botao);
+    color: var(--branco-principal);
+
+    display: inline-block;
+
+    padding: 1em;
+    margin-top: 1.2em;
+
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px var(--branco-principal);
+}
+.container-botao1-terciario:hover {
+    background-color: var(--branco-principal);
+    color: var(--cor-de-fundo);
+    box-shadow: inset 1px 1px 10px rgb(0, 0, 0);
+    transition: 0.5s;
+}
+
+/* CONTAINER QUARTENARIO */
+
+.quartenario {
+    margin: 10em 6em;     
+    padding: 2.8em;
+}
+
+/* AJUSTANDO OS ÍCONES DO CONT. QUARTENARIO */
+
+.container-caixa-quartenario {
+    padding: 2em;
+}
+
+/* CONFIGURANDO O H2 E P DO CONT. QUARTENARIO */
+
+.container-titulo-quartenario {
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--branco-principal);
+    margin-bottom: 0.2em;
+}
+
+.container-text1-quartenario {
+    color: var(--cinza-secundario);
+}
+
+/* AJUSTANDO OS ÍCONES DO CONTAINER DISPOSITIVOS */ 
+
+.container-dispositivos {
+    text-align: center;
+}
+.container-lista-dispositivos {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 5em 0em;
+}
+
+/* CONFIGURANDO O H2 DO CONT. DISPOSITIVOS */
+.container-titulo-dispositivos {
+    font-size: 48px;
+    color: var(--branco-principal);
+}
+
+.container-lista-item {
+    font-size: 32px;
+}
+
+/* AJUSTANDO OS CONTAINERS DO RODAPE */
+
+.rodape {
+    text-align: center;
+}
+.lista-rodape{
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin: 2em 3em;
+}
+
+/* AJUSTANDO O P DOS LINKS DO RODAPE */
+
+.lista-link-rodape > a {
+    color: var(--branco-principal)
+}
+.lista-link-rodape a:hover {
+    color: var(--azul-botao);
+}
+.lista-link-rodape a:active {
+    color: rgba(255, 255, 255, 0.219);
+}
+
+/* AJUSTANDO O P DO RODAPE */
+
+.text-rodape {
+    color: var(--cinza-secundario);
+    margin: 1em;
+    padding: 0.5em;
+    font-size: 14px;
+}
