@@ -32,11 +32,32 @@
 
 .banner__pesquisa::placeholder {
     font-family: var(--font-principal);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     text-align: center;
     color: var(--branco);
     background: url(/imagens/Lupa.svg) no-repeat;
-    background-position: 1em;
+    background-position: .5em;
 }
 
+        @media screen and (min-width:1024px) {
+            /* ESTILIZANDO O TITULO */
+            .banner__titulo {
+                font-size: 36px;
+            }   
+            /* AUMENTANDO A LARGURA DA PESQUISA */
+            .banner__pesquisa {
+                width: 50%;
+            }
+            /* AJUSTANDO O ICONE DA LUPINHA DA PESQUISA */
+            .banner__pesquisa::placeholder {
+                background-position: 5em;
+            }
+        }
+        @media screen and (min-width: 1336px) {
+
+            /* AJUSTANDO O INPUT DE PESQUISA */
+            .banner__pesquisa {
+                width: 35%;
+            }
+        }

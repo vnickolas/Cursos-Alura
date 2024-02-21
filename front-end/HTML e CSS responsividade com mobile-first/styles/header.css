@@ -5,15 +5,15 @@
     height: 24px;
     background-image: url(/imagens/Menu.svg);
     background-repeat: no-repeat;
-    background-position: center center;
-    display: inline-flex;
+    background-position: center;
+    display: inline-block;
 }
 
 .cabecalho {
     background-color: var(--branco);
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
+    align-items: center;
     position: relative;
 }
 
@@ -22,8 +22,20 @@
     align-items: center;
 }
 
+/* ESPAÇANDO O MENU HAMBURGUER */
+
 .container__imagem {
-    padding: 1em;
+    margin: 0.5em;
+}
+
+/* DESAPARECENDO O TITULO PARA VERSÃO MOBILE-FIRTS */
+.container__titulo {
+    display: none;
+}
+
+/* DESAPARECENDO PARA VERSÃO MOBILE-FIRTS, O 'OPÇÕES' AO CLICAR EM 'CATEGORIAS'  */
+.opcoes {
+    display: none;
 }
 
 /* CONFIGURANDO O MENU HAMBURGUER */
@@ -39,6 +51,12 @@
 
 .container__botao:checked ~ .lista-menu { 
     display: block;
+}
+.container__botao:checked ~ .container__rotulo > .cabecalho__menu-hamburguer {
+    background-image: url("..//imagens/Menu\ Aberto.svg");
+}
+.container__botao:checked~.container__rotulo {
+    background: var(--azul-degrade);
 }
 
 /* COSTUMIZANDO O MENU HAMBURGUER */
@@ -68,3 +86,120 @@
 .container__botao {
     display: none;
 }
+
+/* FAZENDO OS LINKS DO CABEÇALHO DA SACOLA E PERFIL, DESAPARECEREM */
+
+.container__texto {
+    display: none;
+}
+
+/* ************TABLET************ */
+        @media screen and (min-width:1024px) {
+
+            /* ESTILIZANDO E CONFIGURANDO O TITULO DA BARRA DO MENU */
+
+            .container__titulo,
+            .container__titulo-negrito {
+                font-family: var(--fonte-secundaria);
+                font-size: 30px;
+            }
+            .container__titulo {
+                display: block;
+                font-weight: 400;
+            }
+            .container__titulo-negrito {
+                font-weight: 700;
+            }
+            
+            /* ESTILIZANDO O MENU DE OPÇÕES */
+
+            .opcoes {
+                display: flex;
+            }
+            .opcoes__item {
+                padding: 1em 2em;
+                text-transform: uppercase;
+            }
+            .opcoes__link {
+                text-decoration: none;
+                color: var(--preto);
+            }
+            /* TIRANDO O ITEM CORAÇÃO (FAVORITOS) */
+            .container__imagem-favoritos {
+                display: none;
+            }
+            /* TIRANDO O MENU HAMBURGUER */
+            .cabecalho__menu-hamburguer {
+                display: none;
+            }
+
+            /* COLOCANDO O MENU QUANDO CLICADO EM "CATEGORIAS" */
+
+            .opcoes__botao {
+                display: none;
+            }
+            .opcoes__botao:checked ~ .lista-menu {
+                display: block;
+                width: auto;
+            }
+
+            .opcoes__botao:checked ~ .opcoes__rotulo > .opcoes__item {
+                background: var(--azul-degrade);
+                color: var(--branco);
+            }
+
+            /* QUANDO PASSAR O MOUSE EM CIMA */
+
+            .lista-menu__item:hover {
+                background: var(--azul-degrade);                
+            }
+            .lista-menu__item:hover > .lista-menu__link {
+                -webkit-text-fill-color: var(--branco);
+                text-decoration: none;
+            }
+
+        }        
+        
+/* ************DESKTOP************ */
+        @media screen and (min-width: 1336px) {
+            
+            /* FAZENDO O TEXTO DOS LINKS DA DIREITA DO CABEÇALHO, APARECEREM */
+
+            .container__texto {
+                display: block;
+            }
+            /* CONFIGURANDO E ESTILIZANDO OS LINKS */
+            .container__link {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: var(--preto);
+            }
+
+            /* EFEITO NAS OPÇÕES DO MENU DO MEIO */
+            .opcoes__item:hover {              
+                text-shadow: 1px 1px 20px black;
+                transition: all 0.5s;
+            }
+            .opcoes__link:hover {
+                color: var(--laranja);
+                cursor: pointer;
+                transition: 0.2s;
+            }        
+            /* EFEITO NAS OPÇÕES DO MENU DOA DIREITA */
+            .container__texto:hover {              
+                text-shadow: 1px 1px 20px black;
+                transition: all 0.5s;
+                color: var(--laranja);
+                cursor: pointer;
+            }
+        
+            /*CONFIGURANDO O ESPAÇAMENTO DOS LADOS DO CABEÇALHO INTEIRO*/
+            .cabecalho {
+                padding: 0em 2em;
+            }
+            /*PREENCHE TODA A DIREITA DO CABEÇALHO COM UMA MARGIN PARA QUE OS ICONES DAS OPÇÕES SEJAM EMPURRADOS PARA A ESQUERDA*/
+            .opcoes {
+                margin-right: auto;
+            }
+        }
