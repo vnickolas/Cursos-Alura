@@ -1,6 +1,7 @@
 
 .cabecalho {
   background: var(--verde-claro);
+  border-bottom: 4px solid white;
 }
 
 .cabecalho .cabecalho__nav {
@@ -9,7 +10,7 @@
   align-items: center;
   row-gap: 1.6rem;
   padding: 4.0rem 1.6rem;
-  white-space: nowrap;
+  white-space: nowrap;  
 }
 
 .cabecalho__nav--logo {
@@ -41,7 +42,7 @@
 
 .cabecalho .cabecalho__nav .cabecalho__nav--lista a:hover {
   font-weight: 600;
-  transition: .5s;
+  transition: ease-in-out 0.7s;
 }
 
 @media screen and (min-width: 768px) {

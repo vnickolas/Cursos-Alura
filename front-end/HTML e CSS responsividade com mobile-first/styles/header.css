@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+.cabecalho__menu-hamburguer {
+    width: 24px;
+    height: 24px;
+    background-image: url(/imagens/Menu.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: inline-flex;
+}
+
+.cabecalho {
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    position: relative;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.container__imagem {
+    padding: 1em;
+}
+
+/* CONFIGURANDO O MENU HAMBURGUER */
+
+.lista-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 60vw;
+}
+
+/* CRIANDO A ANIMAÇÃO DO MENU HAMBURGUER */
+
+.container__botao:checked ~ .lista-menu { 
+    display: block;
+}
+
+/* COSTUMIZANDO O MENU HAMBURGUER */
+
+.lista-menu__titulo,
+.lista-menu__item {
+    padding: 1em;
+    background-color: var(--branco);
+}
+
+/* COSTUMIZANDO O TITULO DO MENU HAMBURGUER */
+
+.lista-menu__titulo {    
+    color: var(--laranja);
+    font-weight: 700;
+}
+.lista-menu__link {
+    background: var(--azul-degrade);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+}
+
+/* FAZENDO O CHECKBOX DESAPARECER */
+
+.container__botao {
+    display: none;
+}
