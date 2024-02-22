@@ -54,12 +54,16 @@
             
                                 <li class="lista-menu__item"><a href="#"    class="lista-menu__link">Design & UX</a></li>
                         </ul>
-                <li class="opcoes__item">
-                    <a href="#" class="opcoes__link">Favoritos</a>
+                <label for="opcoes__item">
+                    <li class="opcoes__item" id="opcoes-item">
+                        <a href="#" class="opcoes__item opcoes__link">Favoritos</a>
+                    </li>
+                </label>
+                <label for="opcoes__item">
+                    <li class="opcoes__item" id="opcoes-item">
+                        <a href="#" class="opcoes__item opcoes__link">Minha estante</a>
                 </li>
-                <li class="opcoes__item">
-                    <a href="#" class="opcoes__link">Minha estante</a>
-                </li>
+                 </label>        
             </ul>
             <!-- FIM DA BARRA DO MEIO DO MENU -->
 
@@ -345,7 +349,7 @@
                 el: '.swiper-pagination',
                 type: 'bullets',
             },
-            loop: true, // Se o carrossel deve ser em loop
+            loop: true, // carrossel deve ser em loop
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
