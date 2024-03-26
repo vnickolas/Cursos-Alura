@@ -5,11 +5,23 @@ const longoBt = document.querySelector('.app__card-button--longo')
 const banner = document.querySelector('.app__image')
 const titulo = document.querySelector('.app__title')
 const botoes = document.querySelectorAll('.app__card-button')
-const musicaFocoInput = document.querySelector('#alternar-musica')
+const startPauseBt = document.querySelector('#start-pause')
+const iniciarOuPausarBt = document.querySelector('#start-pause span')
+const imgBt = document.querySelector('.app__card-primary-butto-icon')
+const tempoNaTela = document.querySelector('#timer')
+
+const musicaInput = document.querySelector('#alternar-musica')
 const musica = new Audio('/sons/luna-rise-part-one.mp3')
+ const somIniciar = new Audio('/sons/play.wav')
+ const somPausar = new Audio('/sons/pause.mp3')
+ const somZerar = new Audio('/sons/beep.mp3')
+
 musica.loop=true
 
-musicaFocoInput.addEventListener('change', () => {
+let tempoDecorridoEmSegundos = 1500 //guardando o valor do contador de segundos (que vai se alterar dinamicamente) numa variavel
+let intervaloId = null
+
+musicaInput.addEventListener('change', () => {
     if (musica.paused) {
         musica.play()
     } else {
@@ -17,22 +29,26 @@ musicaFocoInput.addEventListener('change', () => {
     }
 })
 focoBt.addEventListener('click', () => { // '() =>' é uma arrow function 
+    tempoDecorridoEmSegundos = 1500
     alterarContexto('foco')
     focoBt.classList.add('active')
 })
 
 curtoBt.addEventListener('click', () => {
+    tempoDecorridoEmSegundos = 300
     alterarContexto('descanso-curto')
     curtoBt.classList.add('active')
 })
 
 longoBt.addEventListener('click', () => {
+    tempoDecorridoEmSegundos = 900
     alterarContexto('descanso-longo')
     longoBt.classList.add('active')
 })
 
-//MUDANDO A FOTO E COR DE FUNDO DOS MODOS DE CONTEXTO
+                                        //MUDANDO A FOTO E COR DE FUNDO DOS MODOS DE CONTEXTO
 function alterarContexto (contexto) {
+    mostrarTempo()
     botoes.forEach(function (contexto){ // Neste trecho de código, a função alterarContexto percorre todos os botões e remove a classe "active" de cada um deles, garantindo que apenas um botão fique ativo por vez.
         contexto.classList.remove('active')
     })
@@ -56,3 +72,53 @@ function alterarContexto (contexto) {
     }
 }
 
+
+                                            // FAZENDO O CRONOMETRO
+
+const contagemRegressiva = () => { //guardando uma FUNÇÃO (função de seta[arrow function]) dentro de uma VARIAVEL (CONST) para decrementar (ir diminuindo) o contador    
+    if (tempoDecorridoEmSegundos <= 0){
+        // somZerar.play()
+        alert('Tempo acabou')
+        zerar() //quando o tempoDecorrdioEmSegundos for menos ou igual a 0, eu trago a função interromper a função (para não contar mais)
+        return
+    }
+    tempoDecorridoEmSegundos -= 1 
+    mostrarTempo()
+}
+startPauseBt.addEventListener('click', iniciarOuPausar) //quando clicado, vai chamar a função IniciarTemporizador que vai chamar a função 'contagemRegressiva' onde vai sempre diminuir 1 do valor definido em "tempoDecorridoEmSegundos" e vai setar um intervalor de 1s (1000) para cada 1 que diminuir do valor de tempoDecorridoEmSegundos
+
+
+// INCIA OU PAUSA DE ACORDO COM O CLICK NO ADDEVENTLISTENER DO STARPAUSEBT.
+function iniciarOuPausar() {
+    if(intervaloId) {//de começo, o valor do intervalID é null, e assim, vai passar para ele contar os valores setados em 'contagemRegressiva' para iniciar o crônometro. Assim, quando clicado da segunda vez, ele vai ler esse "SE intervaloID tiver com algum valor, ele vai fazer a função zerar()"...
+        zerar() //chama a funçao zerar que interrompe a contagem
+        // somPausar.play()
+        //tocar sempre quando o intervaloId ter algum valor ainda, e quisermos interromper a contagem OBS: tirei pois ficou estranho
+    
+        iniciarOuPausarBt.textContent = "Retomar"
+        imgBt.setAttribute('src', '/imagens/play_arrow.png');
+        musicaInput.checked = false; //Desmarca o input de música quando o cronômetro é pausado
+        musica.pause()//pausa a música, combinando com a desmarcação do input de música
+        return
+    }
+    somIniciar.play() //tocar sempre quando iniciar a contagem
+    intervaloId = setInterval (contagemRegressiva, 1000) //assim, o intervaloId vai receber os valores dos segundos
+    iniciarOuPausarBt.textContent = "Pausar"; //Quando o cronometro é iniciado, já vai aparecer o label de "pausar"
+    musicaInput.checked = true; // Marca o input de música quando o cronômetro é iniciado
+    imgBt.setAttribute('src', '/imagens/pause.png'); //Define a imagem de pausar 
+    musica.play() //toca a música, combinando com a marcação do input de música
+}
+
+//QUANDO O ADDEVENTLISTENER DO STARPAUSEBT É CLICADO E AINDA EXISTE ALGUM VALOR DENTRO DE INTERVALDOID, É CHAMADO ESSA FUNÇÃO ZERAR() PARA QUEM O CLEARINTERVAL PAUSE A CONTAGEM
+function zerar () {
+    clearInterval(intervaloId)
+    iniciarOuPausarBt.textContent = "Começar"
+    intervaloId=null
+}
+
+function mostrarTempo (){
+    const tempo = new Date(tempoDecorridoEmSegundos*1000)
+    const tempoFormatado = tempo.toLocaleTimeString('pt-Br', {minute: '2-digit', second: '2-digit'})
+    tempoNaTela.innerHTML = `${tempoFormatado}`
+}
+mostrarTempo() // PARA SEMPRE MOSTRAR O TIMER
