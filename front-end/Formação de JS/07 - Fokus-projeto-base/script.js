@@ -85,8 +85,6 @@ const contagemRegressiva = () => { //guardando uma FUNÇÃO (função de seta[ar
     }
     tempoDecorridoEmSegundos -= 1 
     mostrarTempo()
-    console.log('intervaloID na contagemRegressiva: ' + intervaloId)
-    console.log('tempoDecorridoEmSegundos na contagemRegressiva: ' + tempoDecorridoEmSegundos)
 }
 startPauseBt.addEventListener('click', iniciarOuPausar) //quando clicado, vai chamar a função IniciarTemporizador que vai chamar a função 'contagemRegressiva' onde vai sempre diminuir 1 do valor definido em "tempoDecorridoEmSegundos" e vai setar um intervalor de 1s (1000) para cada 1 que diminuir do valor de tempoDecorridoEmSegundos
 
@@ -103,7 +101,6 @@ function iniciarOuPausar() {
         imgBt.setAttribute('src', '/imagens/play_arrow.png');
         musicaInput.checked = false; //Desmarca o input de música quando o cronômetro é pausado
         musica.pause()//pausa a música, combinando com a desmarcação do input de música
-        console.log('intervaloID no inicarOuPausar: ' + intervaloId)
         return 
     }
     somIniciar.play() //tocar sempre quando iniciar a contagem
@@ -112,7 +109,6 @@ function iniciarOuPausar() {
     musicaInput.checked = true; // Marca o input de música quando o cronômetro é iniciado
     imgBt.setAttribute('src', '/imagens/pause.png'); //Define a imagem de pausar 
     musica.play() //toca a música, combinando com a marcação do input de música
-    console.log('tempoDecorridoEmSegundos no inicarOuPausar: ' + tempoDecorridoEmSegundos)
 }
 
 //QUANDO O ADDEVENTLISTENER DO STARPAUSEBT É CLICADO E AINDA EXISTE ALGUM VALOR DENTRO DE INTERVALDOID, É CHAMADO ESSA FUNÇÃO ZERAR() PARA QUEM O CLEARINTERVAL PAUSE A CONTAGEM
