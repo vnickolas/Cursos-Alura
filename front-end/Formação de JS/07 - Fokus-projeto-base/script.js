@@ -35,7 +35,7 @@ focoBt.addEventListener('click', () => { // '() =>' é uma arrow function
 })
 
 curtoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 300
+    tempoDecorridoEmSegundos = 3
     alterarContexto('descanso-curto')
     curtoBt.classList.add('active')
 })
@@ -79,19 +79,23 @@ const contagemRegressiva = () => { //guardando uma FUNÇÃO (função de seta[ar
     if (tempoDecorridoEmSegundos <= 0){
         // somZerar.play()
         alert('Tempo acabou')
-        zerar() //quando o tempoDecorrdioEmSegundos for menos ou igual a 0, eu trago a função interromper a função (para não contar mais)
+        musica.pause()
+        zerar() //quando o tempoDecorrdioEmSegundos for menos ou igual a 0, eu trago a função interromper a função (para não contar mais) e declarar o valor valor do intervaloId como null de novo
         return
     }
     tempoDecorridoEmSegundos -= 1 
     mostrarTempo()
+    console.log('intervaloID na contagemRegressiva: ' + intervaloId)
+    console.log('tempoDecorridoEmSegundos na contagemRegressiva: ' + tempoDecorridoEmSegundos)
 }
 startPauseBt.addEventListener('click', iniciarOuPausar) //quando clicado, vai chamar a função IniciarTemporizador que vai chamar a função 'contagemRegressiva' onde vai sempre diminuir 1 do valor definido em "tempoDecorridoEmSegundos" e vai setar um intervalor de 1s (1000) para cada 1 que diminuir do valor de tempoDecorridoEmSegundos
 
 
 // INCIA OU PAUSA DE ACORDO COM O CLICK NO ADDEVENTLISTENER DO STARPAUSEBT.
 function iniciarOuPausar() {
-    if(intervaloId) {//de começo, o valor do intervalID é null, e assim, vai passar para ele contar os valores setados em 'contagemRegressiva' para iniciar o crônometro. Assim, quando clicado da segunda vez, ele vai ler esse "SE intervaloID tiver com algum valor, ele vai fazer a função zerar()"...
-        zerar() //chama a funçao zerar que interrompe a contagem
+    if(intervaloId != null ) {//de começo, o valor do intervalID é null, e assim, vai passar para ele contar os valores setados em 'contagemRegressiva' para iniciar o crônometro. Assim, quando clicado da segunda vez, ele vai ler esse "SE intervaloID tiver com algum valor, ele vai fazer a função zerar()"...
+        zerar() //chama a funçao zerar que interrompe a contagem 
+
         // somPausar.play()
         //tocar sempre quando o intervaloId ter algum valor ainda, e quisermos interromper a contagem OBS: tirei pois ficou estranho
     
@@ -99,20 +103,22 @@ function iniciarOuPausar() {
         imgBt.setAttribute('src', '/imagens/play_arrow.png');
         musicaInput.checked = false; //Desmarca o input de música quando o cronômetro é pausado
         musica.pause()//pausa a música, combinando com a desmarcação do input de música
-        return
+        console.log('intervaloID no inicarOuPausar: ' + intervaloId)
+        return 
     }
     somIniciar.play() //tocar sempre quando iniciar a contagem
-    intervaloId = setInterval (contagemRegressiva, 1000) //assim, o intervaloId vai receber os valores dos segundos
+    intervaloId = setInterval (contagemRegressiva, 1000) //assim, o intervaloId chama a função contagemRegressiva e seta em um intervalo de 1s (1000). Conseguimos setar isso, com o método serInterval ele pede onde vc quer setar esse intervalo e com quantos segundos 
     iniciarOuPausarBt.textContent = "Pausar"; //Quando o cronometro é iniciado, já vai aparecer o label de "pausar"
     musicaInput.checked = true; // Marca o input de música quando o cronômetro é iniciado
     imgBt.setAttribute('src', '/imagens/pause.png'); //Define a imagem de pausar 
     musica.play() //toca a música, combinando com a marcação do input de música
+    console.log('tempoDecorridoEmSegundos no inicarOuPausar: ' + tempoDecorridoEmSegundos)
 }
 
 //QUANDO O ADDEVENTLISTENER DO STARPAUSEBT É CLICADO E AINDA EXISTE ALGUM VALOR DENTRO DE INTERVALDOID, É CHAMADO ESSA FUNÇÃO ZERAR() PARA QUEM O CLEARINTERVAL PAUSE A CONTAGEM
 function zerar () {
-    clearInterval(intervaloId)
-    iniciarOuPausarBt.textContent = "Começar"
+    clearInterval(intervaloId) //pausa a contagem
+    iniciarOuPausarBt.textContent = "Começar" //aparece 
     intervaloId=null
 }
 
