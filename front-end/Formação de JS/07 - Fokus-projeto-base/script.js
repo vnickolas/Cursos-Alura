@@ -94,12 +94,12 @@ startPauseBt.addEventListener('click', iniciarOuPausar) //quando clicado, vai ch
 
                 // INICIA OU PAUSA DE ACORDO COM O CLICK NO ADDEVENTLISTENER DO STARPAUSEBT.
 function iniciarOuPausar() {
-    if(intervaloId != null ) {//de começo, o valor do intervalID é null, e assim, como no começo ele está como null, ele não vai fazer esse if e vai pular para baixo e vai receber o valor do setInterval
-        zerar() //Caso a contagem está acontecendo e como o intervaloID não está mais como null, quando clicarmos novamente no ADDEVENTLISTENER DO STARPAUSEBT, ele irá verificar esse IF. Assim, como o intervaloID vai ser diferente (!=) de null, ele irá fazer a função zerar()
+    if(intervaloId != null ) {//de começo, o valor do intervalID é null, e assim, como no começo ele está como null, ele não vai fazer esse if e vai pular para baixo e vai receber o valor do setInterval (que vai ser 1)
+        zerar() //Caso a contagem está acontecendo e como o intervaloID não está mais como null, quando clicarmos novamente no ADDEVENTLISTENER DO STARPAUSEBT, ele irá verificar esse IF. Assim, como o intervaloID vai ser diferente (!=) de null, ele irá fazer a função zerar() na qual PAUSA o setInterval
 
         // somPausar.play() //tocar sempre quando o intervaloId ter algum valor ainda, e quisermos interromper a contagem OBS: tirei pois ficou estranho
     
-        iniciarOuPausarBt.textContent = "Retomar"
+        iniciarOuPausarBt.textContent = "Retomar" //Informa que se clicar novamente no ADDEVENTLISTENER DO STARPAUSEBT, ele irá retormar a contagem
         imgBt.setAttribute('src', '/imagens/play_arrow.png');
         musicaInput.checked = false; //Desmarca o input de música quando o cronômetro é pausado
         musica.pause()//pausa a música, combinando com a desmarcação do input de música
