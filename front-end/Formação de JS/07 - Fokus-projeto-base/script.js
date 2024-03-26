@@ -86,16 +86,18 @@ const contagemRegressiva = () => { //guardando uma FUNÇÃO (função de seta[ar
     tempoDecorridoEmSegundos -= 1 
     mostrarTempo()
 }
+
+                                //FAZENDO AÇÃO QUANDO ELE CLICAR
+
 startPauseBt.addEventListener('click', iniciarOuPausar) //quando clicado, vai chamar a função IniciarTemporizador que vai chamar a função 'contagemRegressiva' onde vai sempre diminuir 1 do valor definido em "tempoDecorridoEmSegundos" e vai setar um intervalor de 1s (1000) para cada 1 que diminuir do valor de tempoDecorridoEmSegundos
 
 
-// INCIA OU PAUSA DE ACORDO COM O CLICK NO ADDEVENTLISTENER DO STARPAUSEBT.
+                // INICIA OU PAUSA DE ACORDO COM O CLICK NO ADDEVENTLISTENER DO STARPAUSEBT.
 function iniciarOuPausar() {
-    if(intervaloId != null ) {//de começo, o valor do intervalID é null, e assim, vai passar para ele contar os valores setados em 'contagemRegressiva' para iniciar o crônometro. Assim, quando clicado da segunda vez, ele vai ler esse "SE intervaloID tiver com algum valor, ele vai fazer a função zerar()"...
-        zerar() //chama a funçao zerar que interrompe a contagem 
+    if(intervaloId != null ) {//de começo, o valor do intervalID é null, e assim, como no começo ele está como null, ele não vai fazer esse if e vai pular para baixo e vai receber o valor do setInterval
+        zerar() //Caso a contagem está acontecendo e como o intervaloID não está mais como null, quando clicarmos novamente no ADDEVENTLISTENER DO STARPAUSEBT, ele irá verificar esse IF. Assim, como o intervaloID vai ser diferente (!=) de null, ele irá fazer a função zerar()
 
-        // somPausar.play()
-        //tocar sempre quando o intervaloId ter algum valor ainda, e quisermos interromper a contagem OBS: tirei pois ficou estranho
+        // somPausar.play() //tocar sempre quando o intervaloId ter algum valor ainda, e quisermos interromper a contagem OBS: tirei pois ficou estranho
     
         iniciarOuPausarBt.textContent = "Retomar"
         imgBt.setAttribute('src', '/imagens/play_arrow.png');
