@@ -35,7 +35,7 @@ focoBt.addEventListener('click', () => { // '() =>' é uma arrow function
 })
 
 curtoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 3
+    tempoDecorridoEmSegundos = 300
     alterarContexto('descanso-curto')
     curtoBt.classList.add('active')
 })
